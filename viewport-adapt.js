@@ -1,5 +1,5 @@
 var viewport = document.querySelector('meta[name="viewport"]').getAttribute('content');
-var body = document.querySelector('body');
+var body = document.body;
 var input = document.createElement('pre');
 var inputMessage = document.createElement('p');
 var result = document.createElement('pre');
@@ -14,11 +14,7 @@ inputMessage.innerHTML = 'The following code is the viewport that this page cont
 input.innerHTML = '&lt;meta name="viewport" content="' + viewport + '"&gt;';
 outputMessage.innerHTML = 'The following code is the equivalent <code>@viewport</code> code, including all prefixed versions. ';
 
-var viewportItems = viewport.split(",");
-if(viewportItems.length == 1) {
-  result.innerHTML = 'There is a problem with your viewport syntax. The different values should be delimited by commas, for example<br><code>&lt;meta name="viewport" content="width=device-width, initial-scale=0.5"&gt;</code>';
-}
-
+var viewportItems = viewport.split(/[;,]/);
 var output = 'viewport {\n';
 
 
